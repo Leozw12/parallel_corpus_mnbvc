@@ -1,0 +1,20 @@
+name: Code Quality Check
+
+on: 
+  pull_request:
+    branches: "*"
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: flake8 (code style check)
+        uses: microsoft/action-python@0.7.0
+        with:
+          flake8: true
+          workdir: '.'
+          python_version: '3.11.*'
